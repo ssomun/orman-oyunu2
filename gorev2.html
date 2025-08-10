@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Görev 2 - Çift Yarık Deneyi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #006400;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>2. Göreve Hoşgeldiniz</h1>
+<p>Çift yarıkta girişim deneyinde ışığın ilginç davranışlarını keşfettiniz. Soruları doğru cevaplayın ve bir sonraki görev için yönlendirmeyi alın!</p>
+
+<div class="question">
+    <p><strong>1. Çift yarıkta girişim deneyinde perde üzerinde ne tür bir desen oluşur?</strong></p>
+    <label><input type="radio" name="q1" value="a"> Sadece tek parlak çizgi</label><br>
+    <label><input type="radio" name="q1" value="b"> Parlak ve karanlık çizgilerden oluşan bir desen</label><br>
+    <label><input type="radio" name="q1" value="c"> Dairesel halkalar</label><br>
+    <label><input type="radio" name="q1" value="d"> Renkli gökkuşağı halkaları</label>
+</div>
+
+<div class="question">
+    <p><strong>2. Işık dalgaları birbirine karıştığında bazen birbirini güçlendirir, bazen de söndürür.</strong></p>
+    <label><input type="radio" name="q2" value="dogru"> Doğru</label><br>
+    <label><input type="radio" name="q2" value="yanlis"> Yanlış</label>
+</div>
+
+<div class="question">
+    <p><strong>3. Bu deneyde ışığın doğasına dair öğrendiğiniz en önemli bilgi neydi?</strong></p>
+    <input type="text" id="q3" placeholder="Kendi cümlenizi yazın" style="width: 100%; padding: 5px;">
+</div>
+
+<button onclick="checkAnswers()">Cevapları Kontrol Et</button>
+
+<div id="feedback"></div>
+
+<script>
+function checkAnswers() {
+    let q1 = document.querySelector('input[name="q1"]:checked');
+    let q2 = document.querySelector('input[name="q2"]:checked');
+    let q3 = document.getElementById("q3").value.trim();
+
+    if (!q1 || !q2 || q3 === "") {
+        document.getElementById("feedback").innerHTML = "Lütfen tüm soruları cevaplayın.";
+        document.getElementById("feedback").style.color = "red";
+        return;
+    }
+
+    if (q1.value === "b" && q2.value === "dogru") {
+        document.getElementById("feedback").innerHTML = 
+            "QR kod solunuzda kalacak şekilde sırtınızı ağaca verin 5 ağaç ilerleyin.";
+        document.getElementById("feedback").style.color = "green";
+    } else {
+        document.getElementById("feedback").innerHTML = 
+            "Biraz daha dikkatli ol, tekrar dene.";
+        document.getElementById("feedback").style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
